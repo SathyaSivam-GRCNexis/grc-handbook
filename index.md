@@ -70,10 +70,6 @@ Each project is a single comprehensive `README.md` covering:
 - Honest self-assessment of where the design is grounded vs aspirational
 - Free further reading
 
-# Voice and approach
-
-Plain English. Present tense. Opinionated. Honest about trade-offs and limits. The aim is "this is how I would build it, here is why, here is what I have not yet learned from experience" rather than generic best-practice prose.
-
 # Status
 
 A working portfolio of frameworks, toolkits, and templates designed to be adapted by organisations rather than copied. Documents are detailed enough to start adoption work; they are not certified or pre-approved by any standards body.
