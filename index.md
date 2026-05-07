@@ -5,11 +5,11 @@ title: Overview
 
 # Overview
 
-A portfolio of fifteen non-technical Governance, Risk, and Compliance projects covering the frameworks, toolkits, methodologies, and templates an organisation needs to run a credible GRC programme alongside the technology platforms in the [companion repository](https://github.com/{{ site.companion_repo }}).
+A handbook of fifteen non-technical Governance, Risk, and Compliance projects covering the frameworks, toolkits, methodologies, and templates an organisation needs to run a credible GRC programme.
 
 These are the documents, processes, and decision frameworks that a Head of GRC, CISO, Risk Manager, DPO, or Operational Resilience Lead would build, adopt, and operate. Together they make up the management-system layer that gives the technology layer its purpose and the audit layer its evidence.
 
-This site also hosts a [six-month curriculum]({{ '/CURRICULUM/' | relative_url }}) covering every standard, regulation, technology, and concept referenced across both portfolios, with free learning resources for each.
+This site also hosts a [six-month curriculum]({{ '/CURRICULUM/' | relative_url }}) covering every standard, regulation, technology, and concept referenced across the portfolio, with free learning resources for each.
 
 <h1 id="projects">Projects</h1>
 

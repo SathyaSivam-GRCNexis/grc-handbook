@@ -12,9 +12,9 @@
 
 <header class="hero">
   <div class="hero-inner">
-    <h1>{{ site.title }}</h1>
-    <p class="tagline">A portfolio of fifteen non-technical Governance, Risk, and Compliance projects covering frameworks, toolkits, methodologies, and templates for a credible GRC programme.</p>
-    <p class="subline">Standards, processes, and decision frameworks the management-system layer needs. Companion to the <a href="https://github.com/{{ site.companion_repo }}">tech architecture portfolio</a>.</p>
+    <h1>{{ site.title }}<span class="title-underline"></span></h1>
+    <p class="tagline">A handbook of fifteen non-technical Governance, Risk, and Compliance projects covering frameworks, toolkits, methodologies, and templates for a credible GRC programme.</p>
+    <p class="subline">Standards, processes, and decision frameworks that make up the management-system layer of a modern GRC operation.</p>
 
     <div class="framework-grid">
       {% for group in site.framework_groups %}
@@ -22,7 +22,7 @@
         <div class="fg-heading">{{ group.heading }}</div>
         <div class="fg-items">
           {% for item in group.items %}
-          <span class="fg-item">{{ item.name }} <span class="fg-tag">{{ item.tag }}</span></span>
+          <span class="fg-item">{{ item.name }}<span class="fg-tag">{{ item.tag }}</span></span>
           {% endfor %}
         </div>
       </div>
@@ -30,10 +30,11 @@
     </div>
 
     <div class="hero-badges">
-      <img alt="Projects" src="https://img.shields.io/badge/Projects-15-2d1b69?style=flat-square&labelColor=0a1638">
-      <img alt="Curriculum" src="https://img.shields.io/badge/Curriculum-24%20weeks-2d1b69?style=flat-square&labelColor=0a1638">
-      <img alt="License" src="https://img.shields.io/badge/License-CC%20BY--SA%204.0-fbbf24?style=flat-square&labelColor=0a1638">
-      <img alt="Companion" src="https://img.shields.io/badge/Companion-grc--tech--projects-2d1b69?style=flat-square&labelColor=0a1638">
+      <img alt="Projects" src="https://img.shields.io/badge/Projects-15-22c55e?style=for-the-badge&labelColor=0f172a">
+      <img alt="Curriculum" src="https://img.shields.io/badge/Curriculum-24%20weeks-3b82f6?style=for-the-badge&labelColor=0f172a">
+      <img alt="Frameworks" src="https://img.shields.io/badge/Frameworks-18%2B-a855f7?style=for-the-badge&labelColor=0f172a">
+      <img alt="License" src="https://img.shields.io/badge/License-CC%20BY--SA%204.0-fbbf24?style=for-the-badge&labelColor=0f172a">
+      <img alt="Status" src="https://img.shields.io/badge/Status-Active-ec4899?style=for-the-badge&labelColor=0f172a">
     </div>
   </div>
 </header>
@@ -45,7 +46,6 @@
     <a href="{{ '/#reading-order' | relative_url }}">Reading Order</a>
     <a href="{{ '/CURRICULUM/' | relative_url }}" class="{% if page.url contains 'CURRICULUM' %}active{% endif %}">Curriculum</a>
     <a href="https://github.com/{{ site.repository }}">GitHub</a>
-    <a href="https://github.com/{{ site.companion_repo }}">Companion (Tech)</a>
   </div>
 </nav>
 
