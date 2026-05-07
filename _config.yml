@@ -1,13 +1,13 @@
 title: GRC Non-Tech Projects
 description: Fifteen non-technical Governance, Risk, and Compliance projects covering frameworks, toolkits, methodologies, and templates for a credible GRC programme.
 url: "https://sathyasivam-grcnexis.github.io"
-baseurl: "/grc-non-tech-projects"
+baseurl: "/grc-handbook"
 
 author:
   name: Sathya Sivam
   github: SathyaSivam-GRCNexis
 
-repository: SathyaSivam-GRCNexis/grc-non-tech-projects
+repository: SathyaSivam-GRCNexis/grc-handbook
 companion_repo: SathyaSivam-GRCNexis/grc-tech-projects
 
 markdown: kramdown
