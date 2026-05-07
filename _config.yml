@@ -1,0 +1,97 @@
+title: GRC Non-Tech Projects
+description: Fifteen non-technical Governance, Risk, and Compliance projects covering frameworks, toolkits, methodologies, and templates for a credible GRC programme.
+url: "https://sathyasivam-grcnexis.github.io"
+baseurl: "/grc-non-tech-projects"
+
+author:
+  name: Sathya Sivam
+  github: SathyaSivam-GRCNexis
+
+repository: SathyaSivam-GRCNexis/grc-non-tech-projects
+companion_repo: SathyaSivam-GRCNexis/grc-tech-projects
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  hard_wrap: false
+
+permalink: /:path/
+
+include:
+  - README.md
+
+exclude:
+  - .gitignore
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - node_modules
+  - "*.gemspec"
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: default
+  - scope:
+      path: "0*"
+    values:
+      layout: project
+  - scope:
+      path: "1*"
+    values:
+      layout: project
+
+# Categorised framework grid for the hero
+framework_groups:
+  - heading: Risk & Governance
+    items:
+      - { name: "COSO ERM", tag: "US" }
+      - { name: "ISO 31000", tag: "ISO" }
+      - { name: "COBIT 2019", tag: "ISACA" }
+      - { name: "FAIR", tag: "Quantified" }
+  - heading: Information Security
+    items:
+      - { name: "ISO 27001:2022", tag: "ISO" }
+      - { name: "SOC 2", tag: "AICPA" }
+      - { name: "NIST CSF 2.0", tag: "US" }
+      - { name: "NIST 800-53", tag: "US" }
+      - { name: "CIS v8.1", tag: "Controls" }
+  - heading: Privacy & Data
+    items:
+      - { name: "GDPR", tag: "EU" }
+      - { name: "CCPA / CPRA", tag: "California" }
+      - { name: "HIPAA", tag: "US" }
+  - heading: Operational Resilience
+    items:
+      - { name: "ISO 22301", tag: "ISO" }
+      - { name: "NIST 800-61", tag: "US" }
+      - { name: "DORA", tag: "EU" }
+  - heading: Industry & Cloud
+    items:
+      - { name: "PCI DSS v4", tag: "Payments" }
+      - { name: "CSA CCM", tag: "Cloud" }
+
+# Project list for landing page grid
+projects:
+  - { num: "01", slug: "01-enterprise-risk-management-framework", title: "Enterprise Risk Management Framework", category: "Foundations", summary: "Methodology, taxonomy, scoring, register, treatment workflows, appetite, governance, three-lines model." }
+  - { num: "02", slug: "02-iso27001-implementation-toolkit", title: "ISO 27001 Implementation Toolkit", category: "Standards", summary: "Full ISO 27001:2022 set: scope, policy, SoA, methodology, all 93 Annex A controls, audit cycle, certification roadmap." }
+  - { num: "03", slug: "03-audit-readiness-playbook", title: "Audit Readiness Playbook", category: "Audit", summary: "From 'we have controls' to 'ready for the auditor next week': calendar, evidence locker, sample handling, interview prep." }
+  - { num: "04", slug: "04-third-party-risk-management-toolkit", title: "Third-Party Risk Management Toolkit", category: "Operations", summary: "Vendor classification, three-tier questionnaires, contractual clause library, onboarding, monitoring, exit." }
+  - { num: "05", slug: "05-information-security-policy-framework", title: "Information Security Policy Framework", category: "Foundations", summary: "Four-level hierarchy, lifecycle, exception register, awareness, starter library of 25+ documents." }
+  - { num: "06", slug: "06-control-mapping-matrix", title: "Control Mapping Matrix", category: "Standards", summary: "Cross-walk across ISO 27001, NIST CSF, 800-53, SOC 2, CIS v8.1, PCI DSS v4, HIPAA, CCM with mapping methodology." }
+  - { num: "07", slug: "07-risk-scenario-library-saas", title: "SaaS Risk Scenario Library", category: "Risk", summary: "40+ realistic SaaS risk scenarios with likelihood, impact, controls, real-world examples, tabletop versions." }
+  - { num: "08", slug: "08-grc-metrics-kpi-framework", title: "GRC Metrics & KPI Framework", category: "Visibility", summary: "KPIs, KRIs, KCIs, KGIs catalogue with definitions, sources, dashboards, cadences, audiences." }
+  - { num: "09", slug: "09-incident-response-framework", title: "Incident Response Framework", category: "Resilience", summary: "NIST 800-61-aligned: severity model, lifecycle, playbook library, breach notification register across jurisdictions." }
+  - { num: "10", slug: "10-business-continuity-dr-framework", title: "Business Continuity & DR Framework", category: "Resilience", summary: "BIA, impact tolerances, recovery strategies, DR plans, crisis management, testing programme." }
+  - { num: "11", slug: "11-risk-register-templates", title: "Risk Register Templates", category: "Risk", summary: "Five register variants from startup-minimal to enterprise-quantified (FAIR-aligned) with sample populated entries." }
+  - { num: "12", slug: "12-audit-finding-tracker-templates", title: "Audit Finding Tracker Templates", category: "Audit", summary: "Lightweight template-based finding tracker: intake, severity, lifecycle, validation discipline, repeat-finding management." }
+  - { num: "13", slug: "13-compliance-calendar", title: "Compliance Calendar", category: "Audit", summary: "Consolidated calendar of audits, certifications, regulatory submissions, contractual obligations, operational compliance." }
+  - { num: "14", slug: "14-vendor-due-diligence-tracker", title: "Vendor Due Diligence Tracker", category: "Operations", summary: "Operational tracker for vendor pipeline, evidence locker, conditional approvals, reassessments, incident log." }
+  - { num: "15", slug: "15-control-effectiveness-testing-templates", title: "Control Effectiveness Testing Templates", category: "Audit", summary: "Test plan templates, sampling guidance, evidence patterns, validator independence, continuous monitoring, reporting." }

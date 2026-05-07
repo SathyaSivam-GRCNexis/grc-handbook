@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
+  <meta name="description" content="{{ page.description | default: site.description }}">
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%232d1b69'/%3E%3Ctext x='50' y='66' font-size='52' font-weight='800' text-anchor='middle' fill='%23fbbf24' font-family='system-ui'%3EG%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <h1>{{ site.title }}</h1>
+    <p class="tagline">A portfolio of fifteen non-technical Governance, Risk, and Compliance projects covering frameworks, toolkits, methodologies, and templates for a credible GRC programme.</p>
+    <p class="subline">Standards, processes, and decision frameworks the management-system layer needs. Companion to the <a href="https://github.com/{{ site.companion_repo }}">tech architecture portfolio</a>.</p>
+
+    <div class="framework-grid">
+      {% for group in site.framework_groups %}
+      <div class="fg-group">
+        <div class="fg-heading">{{ group.heading }}</div>
+        <div class="fg-items">
+          {% for item in group.items %}
+          <span class="fg-item">{{ item.name }} <span class="fg-tag">{{ item.tag }}</span></span>
+          {% endfor %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <div class="hero-badges">
+      <img alt="Projects" src="https://img.shields.io/badge/Projects-15-2d1b69?style=flat-square&labelColor=0a1638">
+      <img alt="Curriculum" src="https://img.shields.io/badge/Curriculum-24%20weeks-2d1b69?style=flat-square&labelColor=0a1638">
+      <img alt="License" src="https://img.shields.io/badge/License-CC%20BY--SA%204.0-fbbf24?style=flat-square&labelColor=0a1638">
+      <img alt="Companion" src="https://img.shields.io/badge/Companion-grc--tech--projects-2d1b69?style=flat-square&labelColor=0a1638">
+    </div>
+  </div>
+</header>
+
+<nav class="tabnav">
+  <div class="tabnav-inner">
+    <a href="{{ '/' | relative_url }}" class="{% if page.url == '/' %}active{% endif %}">Overview</a>
+    <a href="{{ '/#projects' | relative_url }}">Projects</a>
+    <a href="{{ '/#reading-order' | relative_url }}">Reading Order</a>
+    <a href="{{ '/CURRICULUM/' | relative_url }}" class="{% if page.url contains 'CURRICULUM' %}active{% endif %}">Curriculum</a>
+    <a href="https://github.com/{{ site.repository }}">GitHub</a>
+    <a href="https://github.com/{{ site.companion_repo }}">Companion (Tech)</a>
+  </div>
+</nav>
+
+<main class="content">
+  {{ content }}
+</main>
+
+<footer class="site-footer">
+  <p>Maintained by <a href="https://github.com/{{ site.author.github }}">{{ site.author.name }}</a> &middot; Content licensed under CC BY-SA 4.0 &middot; <a href="https://github.com/{{ site.repository }}">View on GitHub</a></p>
+</footer>
+
+</body>
+</html>
