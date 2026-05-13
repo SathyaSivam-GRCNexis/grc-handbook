@@ -1,77 +1,83 @@
 # Audit Finding Tracker (Templates)
 
-## What this project is
+## What this is
 
-A pack of templates and operating procedures for tracking audit findings and management responses across the organisation, from external audits (SOC 2, ISO 27001 surveillance, regulatory examinations, customer security audits) and internal sources (internal audit, self-assessments, incident root-cause analyses, penetration tests, control effectiveness testing).
+A pack of templates and operating procedures for tracking audit findings and management responses across the organisation. It handles findings from external audits (SOC 2, ISO 27001 surveillance, regulatory examinations, customer security audits) and from internal sources (internal audit, self-assessments, incident post-mortems, pen tests, control effectiveness testing).
 
-This is the non-technical, template-based counterpart to the Audit Finding Tracker tech project elsewhere in the portfolio. It assumes a spreadsheet, a wiki, or a basic ticketing tool rather than a custom platform, and is suitable for organisations that have not yet justified investment in dedicated software.
+This is the template-based counterpart to the Audit Finding Tracker tech project elsewhere in the portfolio. It assumes a spreadsheet, a wiki, or a basic ticketing tool, not a custom platform. Suitable for organisations that have not yet justified investment in dedicated software, which is most of them honestly.
 
 ## Why this matters
 
-Audit findings are the most concrete, externally visible evidence of programme weakness. How the organisation handles findings is itself observed in the next audit cycle. Companies with disciplined finding management:
+Findings are the most visible piece of evidence about programme health. The way you handle them is itself observed in the next audit cycle. Auditors talk to each other across firms more than people think, and the prior year's open items are the first thing the next year's senior manager reads.
 
-- Close findings within agreed timelines.
-- Avoid repeat findings on the same control year over year.
-- Have visible evidence of management response and root-cause learning.
+Teams with finding discipline:
 
-Companies without it:
+- Close items inside the agreed window.
+- Avoid repeat findings on the same control year after year.
+- Have visible management response and root-cause learning.
 
-- Carry overdue findings into the next audit.
+Teams without it:
+
+- Carry overdue findings into the next cycle.
 - Repeat the same finding two or three times.
-- Receive worse opinions or qualified reports.
-- Lose customer trust when audit reports are shared in procurement.
+- Get worse opinions or qualified reports.
+- Lose customer trust when reports surface in procurement.
 
-## Components and deliverables
+Of all of these, the ageing buckets matter more than severity. A Minor finding open for 11 months reads worse to a regulator than a Critical closed inside two weeks. People forget this.
 
-### 1. Finding intake and registration
+## Components
 
-A defined intake channel for findings from each source.
+### 1. Intake and registration
+
+One intake channel per source. Findings get registered the same day, not "when there's time."
 
 | Source | Intake channel | Owner |
 |---|---|---|
-| External SOC 2 / ISO audit | Auditor's draft and final report | GRC Lead |
+| External SOC 2 / ISO audit | Auditor draft and final report | GRC Lead |
 | Customer audit | Customer questionnaire response with concerns flagged | Sales engineering + GRC |
 | Regulatory examination | Examination report or MRA / MRIA letter | GRC Lead + Legal |
 | Internal audit | Internal audit report | Internal Audit |
 | Self-assessment / control testing | Control owner self-test outputs | Control owner |
-| Penetration test | Pen-test report | Security Lead |
+| Pen test | Pen-test report | Security Lead |
 | Incident root-cause | PIR action items | IR Lead |
 | Bug bounty / vulnerability disclosure | Triage queue | Security Lead |
 
-Every finding receives an immutable Finding ID at registration.
+Every finding gets an immutable Finding ID at registration. No exceptions. I have seen too many cases where a finding was "tracked informally in Slack" and then could not be evidenced when asked.
 
-### 2. Standard finding record
+### 2. The finding record
 
-Each finding is recorded with the following fields.
+Each finding carries the following fields.
 
 | Field | Notes |
 |---|---|
 | Finding ID | F-YYYY-NNNN |
 | Source | From the table above |
-| Source reference | Auditor's reference number, page, or section |
+| Source reference | Auditor reference number, page, or section |
 | Title | One sentence summarising the issue |
 | Description | What was observed; what the auditor concluded |
 | Severity | Critical / Major / Moderate / Minor / Observation |
-| Affected control(s) | Reference to canonical control IDs |
+| Affected control(s) | Canonical control IDs |
 | Affected systems / processes | |
 | Date raised | |
 | Date due (per source SLA) | |
-| Owner | Single named individual responsible for closure |
+| Owner | Single named individual |
 | Remediation lead | If different from owner |
 | Management response | Agreed response language for the auditor |
-| Root cause | Why this happened (process, design, knowledge, resource, supplier) |
-| Treatment plan | What will be done |
+| Root cause | Process, design, knowledge, resource, supplier |
+| Treatment plan | What will actually be done |
 | Compensating controls | Where applied during remediation |
 | Status | Open / In progress / Pending validation / Closed / Accepted |
 | Acceptance approver | If status is Accepted |
 | Validation method | How closure will be evidenced |
-| Validator | Who validates closure (must not be remediator) |
+| Validator | Who validates closure (must not be the remediator) |
 | Date closed | |
 | Closure evidence reference | Link or path |
 | Last update | |
 | Next update due | |
 
-### 3. Severity and SLA standard
+The two fields that earn their place above the rest: **management response** (what you told the auditor) and **closure evidence reference** (what you actually did). Auditors compare them. So do customers reading SOC 2 reports.
+
+### 3. Severity and SLA
 
 | Severity | Definition | Default closure SLA |
 |---|---|---|
@@ -81,9 +87,9 @@ Each finding is recorded with the following fields.
 | Minor | Observation requiring remediation but lower urgency | 180 days |
 | Observation | Auditor suggestion or improvement opportunity | Tracked, not SLA-bound |
 
-SLAs may be overridden by the source (regulator-imposed deadline, contractual customer-audit deadline, accepted-risk deferral).
+SLAs can be overridden by the source (regulator deadline, contract deadline, accepted-risk deferral). Override reasons are recorded.
 
-### 4. Finding lifecycle
+### 4. Lifecycle
 
 ```
 Identified -> Triaged -> Assigned -> In Progress -> Pending Validation -> Closed
@@ -93,29 +99,29 @@ Identified -> Triaged -> Assigned -> In Progress -> Pending Validation -> Closed
                                                   +-> Rejected (returned for further work)
 ```
 
-State transitions logged with date and actor.
+Every state transition is logged with date and actor.
 
 ### 5. Validation discipline
 
-Closure is not declared by the remediator. Independent validation is required.
+Closure is not declared by the person who fixed it. Independent validation, every time.
 
-- For control fixes: control test repeated by validator with sample.
-- For policy / process changes: validator reviews documentation and interviews affected staff.
-- For technical changes: validator reviews configuration and test evidence.
+- Control fixes: the validator repeats the control test with a fresh sample.
+- Policy / process changes: validator reviews documentation and interviews affected staff.
+- Technical changes: validator reviews configuration and test evidence.
 
-Validators may be GRC team, internal audit, or peer team. The remediator cannot validate their own work.
+Validators can sit in GRC, internal audit, or a peer team. The remediator cannot validate their own work. This is the discipline external auditors test for hardest. It is also the one most likely to get quietly skipped under deadline pressure.
 
-### 6. Acceptance process
+### 6. Acceptance
 
-When immediate remediation is not possible.
+When remediation is not feasible now.
 
 - Business case for acceptance, including duration.
-- Compensating controls in place.
-- Approval at appropriate authority level (Major+ requires CISO; Critical requires Executive sponsor).
-- Acceptance recorded with expiry date.
+- Compensating controls in place and recorded.
+- Approval at the right authority level (Major and above requires CISO; Critical requires an executive sponsor).
+- Acceptance recorded with an expiry date.
 - Re-evaluation at expiry: re-accept, remediate, or escalate.
 
-Findings cannot be silently aged out. Aged findings either close or convert to accepted.
+Findings cannot quietly age out. Aged items either close or convert to formal acceptance. "Aged accepted" is not a state, it is a smell.
 
 ### 7. Reporting cadence
 
@@ -124,44 +130,42 @@ Findings cannot be silently aged out. Aged findings either close or convert to a
 | GRC team review | Weekly | All open findings, status, blockers |
 | Engineering / GRC sync | Bi-weekly | Findings affecting engineering controls |
 | CISO review | Monthly | All Major+, all overdue, all aged accepted |
-| Executive committee | Quarterly | Critical and Major findings, repeat findings, programme trends |
-| Audit committee / board | Quarterly | Finding metrics, repeat findings, regulatory examination outputs |
+| Executive committee | Quarterly | Critical and Major, repeat findings, programme trends |
+| Audit committee / board | Quarterly | Finding metrics, repeat findings, regulator outputs |
 | External auditor | Per audit cycle | Status of prior-period findings |
 
-### 8. Repeat finding management
+### 8. Repeat findings
 
-Repeat findings are an organisational signal. The framework requires:
+A repeat finding is an organisational signal, not just a control failure.
 
-- Identification of any new finding that maps to a closed historical finding.
-- Root-cause analysis specifically asking why prior remediation failed.
-- Escalation to CISO and ExCo on identification.
-- Reporting of repeat-finding count to board.
+- Flag any new finding mapping to a closed historical one.
+- Root-cause analysis specifically asking why the prior remediation failed.
+- Escalation to CISO and ExCo at identification.
+- Repeat-finding count reported to board.
 
-Auditors specifically test for repeat findings. They are credibility-eroding.
+Auditors specifically look for repeat findings. They erode credibility faster than almost anything else. In one SaaS environment, a single repeat finding on access reviews shifted the conversation with the customer-trust team from "renewal" to "remediation plan required." Two years of clean work undone.
 
 ### 9. Customer audit findings
 
-When customers conduct audits or escalate questionnaire concerns, findings flow into the same tracker. This:
+When a customer audits you or escalates a questionnaire concern, the findings come into the same tracker. Same fields, same SLAs.
 
 - Avoids parallel processes.
-- Prevents inconsistent handling.
-- Ensures customer-visible findings are managed with the same discipline.
+- Stops inconsistent handling across customers.
+- Means the customer-visible work follows the same rigour as the SOC 2 report.
 
 ### 10. Metrics
 
 - Open findings by severity.
-- Findings closed within SLA (percentage).
+- Closed-within-SLA percentage.
 - Mean and median time to close, by severity.
-- Aged findings (open > SLA).
-- Aged accepted findings (accepted > 12 months).
+- Aged findings (open beyond SLA). **This is the metric to lead with.** Ageing buckets are usually a better signal of programme health than severity counts.
+- Aged accepted findings (accepted beyond 12 months).
 - Repeat findings (count and trend).
-- Findings by source (external, internal, customer, regulator, pentest, incident).
-- Findings by affected control area (where do issues cluster).
-- Validator independence (percentage closed by independent validator).
+- Findings by source.
+- Findings by control area (where do issues cluster).
+- Validator independence percentage.
 
-### 11. Templates
-
-The pack includes:
+### 11. Templates included
 
 - Finding intake form (for self-raised findings).
 - Finding record template (spreadsheet or wiki).
@@ -170,53 +174,53 @@ The pack includes:
 - Validation evidence template.
 - Closure notification template.
 - Quarterly board finding report template.
-- Repeat-finding root cause analysis template.
+- Repeat-finding RCA template.
 
-## Real-world lessons baked into this design
+## Lessons built into the design
 
-- **Centralisation matters more than tooling.** Every finding in one tracker, regardless of source, beats sophisticated tooling distributed across silos.
-- **Owners are individuals, not teams.** "The platform team owns it" produces no closure.
-- **Validation independence is non-negotiable.** Self-closure of own findings is the most common audit weakness.
-- **Aged accepteds rot.** "Accepted with compensating control" becomes "forgotten" if there is no review cadence.
-- **Auditors notice management response quality.** Hand-wave responses ("we will address this") get pushed back; specific, dated, owned responses pass.
-- **Customer audits are first-class.** Treating them informally leads to inconsistent posture across customers.
+- **Centralisation beats tooling.** One tracker for all findings, regardless of source, beats fancy tooling spread across silos.
+- **Owners are individuals.** "The platform team owns it" produces no closure. Name a person.
+- **Validation independence is non-negotiable.** Self-closure of own findings is the most common audit weakness I see written up.
+- **Aged accepteds rot.** "Accepted with compensating control" becomes "forgotten" without a review cadence.
+- **Auditors notice response quality.** "We will address this" gets pushed back. Specific, dated, owned responses pass.
+- **Customer audits are first-class.** Treat them informally and you end up with inconsistent posture across customers.
 
-## Common pitfalls
+## Where teams stall
 
-- **Spreadsheet sprawl.** Multiple finding registers per audit, no consolidation.
-- **Missing severities.** Findings recorded without severity, so SLA cannot apply.
-- **Owners drifting.** Owners rotate without re-assignment.
-- **Closure without evidence.** "Closed" with no record of what was done or who validated.
-- **Repeat findings ignored.** No systemic root-cause analysis when the same finding returns.
-- **Acceptance as escape hatch.** Anything inconvenient becomes accepted with weak compensating controls.
-- **No board visibility.** Finding metrics never reach the board, so management is never held accountable.
+- **Spreadsheet sprawl.** A register per audit, never consolidated.
+- **Missing severities.** Recorded without a severity, so the SLA cannot apply.
+- **Drifting owners.** People move teams, no reassignment.
+- **Closure without evidence.** "Closed" with no link, no validator, no nothing.
+- **Repeat findings ignored.** Same item back next year, no RCA.
+- **Acceptance as escape hatch.** Anything inconvenient becomes "accepted" with a thin compensating control.
+- **No board visibility.** Metrics never reach the board, so accountability never lands.
 
-## Audit considerations
+## What auditors actually ask for
 
 - Show me your finding tracker.
-- Show me all findings from your most recent SOC 2 audit. What is the status of each?
+- Show me every finding from the most recent SOC 2. Current status of each?
 - Show me a finding closed in the past 90 days. Show me the validation evidence.
 - Show me an accepted finding. Show me the approval and the compensating control.
-- Show me a repeat finding from last year. What did you do differently?
-- Show me how the board sees finding metrics.
+- Show me a repeat finding from last year. What did you do differently this time?
+- Show me how the board sees this.
 
-## What I have done in this space and what I have not
+## What I have done here and what I have not
 
-I have studied SOC 2 reporting expectations, ISO 27001 nonconformity processes (Clause 10.2), regulatory examination workflows (FedRAMP POAM, banking MRA/MRIA), and audit-software product designs.
+I have worked through SOC 2 reporting expectations, ISO 27001 nonconformity processes (Clause 10.2), regulatory examination workflows (FedRAMP POAM, banking MRA/MRIA), and a few audit-software product designs.
 
-I have not personally negotiated a finding closure with a Big Four senior audit manager at 11pm before a deadline. I have not had to explain a repeat finding to an audit committee chair. I have not had to handle a regulator-imposed remediation deadline that was demonstrably impossible.
+I have not personally negotiated finding closure with a Big Four senior at 11pm before a deadline. I have not had to explain a repeat finding to an audit committee chair. I have not had to handle a regulator-imposed remediation deadline that was demonstrably impossible. These conversations shape real programmes more than any template.
 
 This is a learning portfolio entry.
 
 ## Further reading
 
 - **AICPA SSAE 18 and SOC 2 reporting standards.** Free at aicpa-cima.com.
-- **ISO/IEC 27001:2022 Clause 10.** Paid; ISO and BSI summarise.
+- **ISO/IEC 27001:2022 Clause 10.** Paid; ISO and BSI summaries are useful.
 - **FedRAMP POAM template and Continuous Monitoring Strategy Guide.** Free at fedramp.gov.
 - **NIST SP 800-53A** assessment procedures. Free at csrc.nist.gov.
-- **Bank of England, FCA, PRA examination guidance** for finding-letter formats (s166, MRA, MRIA).
-- **The IIA's Practice Guide series** for internal audit findings discipline. Members-only but summaries free.
+- **Bank of England, FCA, PRA examination guidance** on finding letters (s166, MRA, MRIA).
+- **IIA Practice Guide series** on internal audit findings discipline. Members-only, summaries free.
 
 ## Status
 
-Learning portfolio. Templates and procedures defined. Not used as live finding tracker.
+Learning portfolio. Templates and procedures defined. Not used as a live finding tracker.

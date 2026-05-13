@@ -1,33 +1,35 @@
 # GRC Metrics & KPI Framework
 
-## What this project is
+## What this is
 
-A complete framework for measuring the effectiveness, efficiency, and maturity of a Governance, Risk, and Compliance programme. Includes a defined set of KPIs (Key Performance Indicators), KRIs (Key Risk Indicators), KCIs (Key Control Indicators), the data sources behind each, the cadence of measurement and reporting, the audiences and forums, and sample dashboards designed for executive, board, and operational use.
+A framework for measuring the effectiveness, efficiency, and maturity of a Governance, Risk, and Compliance programme. It defines a set of KPIs (Key Performance Indicators), KRIs (Key Risk Indicators), KCIs (Key Control Indicators), the data sources behind each, measurement cadence, the audiences and forums where each is reported, and sample dashboards for executive, board, and operational use.
 
-This is the document set a Head of GRC, CISO, or Chief Risk Officer would build to answer the question every executive eventually asks: "How do I know this is working?"
+This is the document set a Head of GRC, CISO, or CRO would build to answer the question every executive eventually asks: "How do I know this is working?" In my experience that question arrives about six months after the first big budget conversation, and the answers had better be ready.
 
 ## Problem this framework solves
 
 GRC programmes that cannot measure themselves cannot defend themselves at budget time and cannot detect their own failures.
 
 - "We are improving" with no number behind the claim.
-- Reports that count activity (number of policies updated) instead of outcome (control effectiveness).
-- Dashboards that show 47 metrics, all green, while the actual programme is on fire.
-- Executives who lose interest in GRC reporting because nothing changes from quarter to quarter.
-- Boards that cannot tell whether the programme is mature, declining, or unchanged.
-- Teams that game the metrics because they are misaligned with what actually matters.
+- Reports that count activity (number of policies updated) instead of outcome (whether controls actually work).
+- Dashboards showing 47 metrics, all green, while the actual programme is on fire.
+- Executives losing interest in GRC reporting because nothing ever changes from quarter to quarter.
+- Boards unable to tell whether the programme is improving, declining, or flat.
+- Teams gaming the metrics because the metrics are misaligned with what actually matters.
 - No early warning when a control or risk is degrading.
 
-A working metrics framework fixes these by separating the dials people watch (KPIs and KRIs) from the gauges teams operate to (KCIs and operational metrics), aligning each with decisions someone is going to make based on the number, and reviewing the framework itself periodically to weed out vanity metrics.
+A working metrics framework separates the dials people watch (KPIs and KRIs) from the gauges teams operate to (KCIs and operational metrics). Each metric is tied to a decision someone is going to make. The framework itself is reviewed periodically to weed out vanity metrics.
 
-## Business impact
+Strong opinion. Vanity metrics are the single biggest reason executives stop paying attention to GRC reporting. "Number of policies updated this quarter" tells nobody anything. "Median time to revoke leaver access" tells you whether your IAM actually works. The first is easy to produce; the second is what should be on the dashboard.
 
-- Executives believe and use the data, so GRC reporting actually influences decisions.
-- Board confidence (or sceptical pressure) appropriately calibrated to reality.
-- Earlier detection of programme degradation: a metric trends adversely before an incident or finding.
-- Budget conversations grounded in evidence (we reduced this risk by this much; further reduction requires this investment).
-- Better audit narratives because measurement evidence is structured.
-- Cultural reinforcement: what gets measured gets attention.
+## Why it pays back
+
+- Executives believe and use the data, so GRC reporting starts influencing decisions instead of decorating slide packs.
+- Board confidence (or appropriate scepticism) calibrated to reality.
+- Earlier detection of programme degradation. A metric trends adversely before an incident or finding.
+- Budget conversations grounded in evidence. "We reduced this risk by this much; further reduction needs this investment."
+- Better audit narratives because measurement evidence is structured rather than improvised.
+- Cultural reinforcement. What gets measured gets attention.
 
 ## Framework alignment
 
@@ -37,26 +39,26 @@ A working metrics framework fixes these by separating the dials people watch (KP
 - **SOC 2 CC4.1 and CC4.2** monitoring activities.
 - **ISO 27001 Clause 9.1** monitoring, measurement, analysis and evaluation; and **Clause 9.3** management review.
 - **COBIT 2019** for the IT-governance angle (KGI, KPI, KRI definitions).
-- **The Institute of Risk Management Risk Indicators guidance.**
+- **Institute of Risk Management** Risk Indicators guidance.
 - **CIS Controls v8.1** measurement and metrics references.
-- **FAIR Institute** for quantitative-loss-based metrics.
+- **FAIR Institute** for quantitative loss-based metrics.
 
 ## Categories of measurement
 
-Different metrics serve different purposes. The framework distinguishes them clearly.
+Different metrics serve different purposes. The framework keeps them separate on purpose.
 
 ### KPIs - Key Performance Indicators
 
-Measure how well the GRC function is delivering its services. Examples.
+How well the GRC function is delivering its services. Examples:
 - Audit findings closed within SLA.
 - Time to onboard a new vendor.
-- Internal-audit cycle completion.
+- Internal audit cycle completion.
 
 KPIs are about activity quality.
 
 ### KRIs - Key Risk Indicators
 
-Forward-looking measures of risk-level changes. Examples.
+Forward-looking measures of risk movement. Examples:
 - Number of high-residual risks.
 - Concentration index for Tier 1 vendors.
 - Average age of accepted risks.
@@ -65,7 +67,7 @@ KRIs are about risk trajectory.
 
 ### KCIs - Key Control Indicators
 
-Measures of whether controls are operating as designed. Examples.
+Whether controls are operating as designed. Examples:
 - Percentage of production access reviewed in the period.
 - Mean time to revoke leaver access.
 - Patch SLA compliance for critical vulnerabilities.
@@ -74,16 +76,16 @@ KCIs are about control health.
 
 ### KGIs - Key Goal Indicators (less common but useful)
 
-Measures of whether the programme is achieving its objectives. Examples.
+Whether the programme is hitting its objectives. Examples:
 - Customer-perceived security posture (proxy: contracts won where security was a stated factor).
 - Zero in-period material incidents.
 - Maturity score increase year-on-year.
 
-The four-way split prevents the single most common metrics-framework error: mixing activity, control, risk, and outcome metrics into one dashboard where the audience cannot tell what is signal and what is noise.
+The four-way split prevents the most common metrics-framework error: mixing activity, control, risk, and outcome metrics into one dashboard where the audience cannot tell what is signal and what is noise.
 
 ## A representative metrics catalogue
 
-The framework defines ~50 metrics across the categories above. Below is a representative subset.
+The framework defines around 50 metrics across the categories above. Below is a representative subset.
 
 ### Risk metrics (KRIs)
 
@@ -170,19 +172,19 @@ The full catalogue document. Each metric: definition, source system, owner, cade
 
 ### 2. Data architecture
 
-For each metric, the system of record, extraction method (manual, API, scheduled query), refresh frequency, data quality checks, transformation logic. Many programmes fail because metrics are calculated by hand once per quarter; automation is the difference between maintainable and unmaintainable.
+For each metric: system of record, extraction method (manual, API, scheduled query), refresh frequency, data quality checks, transformation logic. Many programmes fail at exactly this step. Metrics calculated by hand once a quarter age into being calculated by nobody at all. Automation is the difference between maintainable and unmaintainable.
 
 ### 3. Dashboards
 
-Designed for three audiences with different content density.
+Three audiences, three content densities.
 
-**Operational dashboard.** All KCIs and KPIs at high frequency. Owned by GRC ops. Goal: detect issues early and drive action.
+**Operational dashboard.** All KCIs and KPIs at high frequency. Owned by GRC ops. Used to catch issues early and drive action.
 
-**Management dashboard.** Top 20 metrics across the categories. Owned by CISO/Head of GRC. Goal: weekly or monthly visibility for management decisions.
+**Management dashboard.** Top 20 metrics across categories. Owned by CISO or Head of GRC. Weekly or monthly visibility for management decisions.
 
 **Executive / board dashboard.** Top 10-12 metrics. Owned by CISO presenting to ExCo and board. Goal: confidence and judgement.
 
-The board version typically includes:
+The board version usually includes:
 - Top 5 risks with trajectory.
 - Risks breaching appetite.
 - Major audit findings open.
@@ -209,32 +211,32 @@ For each metric, define thresholds.
 - **Amber:** trending adversely or near threshold.
 - **Red:** threshold breached.
 
-Define escalation per status. Red metrics escalate to the appropriate forum within a defined window.
+Define escalation per status. Red metrics escalate to the appropriate forum within a defined window. Common pattern is that "red" is the colour the executive committee sees, not the colour the dashboard discovers.
 
 ### 6. Metric narrative discipline
 
-Numbers without narrative are noise. Every reporting cycle, the GRC lead writes a brief commentary on:
+Numbers without narrative are noise. Every reporting cycle, the GRC lead writes a brief commentary covering:
 - What changed since last period.
 - What the change means.
 - What is being done about it.
 - What is not yet visible but could become so.
 
-This is what executives actually read. The dashboard is the supporting evidence.
+This is what executives actually read. The dashboard is the supporting evidence, not the headline.
 
 ### 7. Metric review process
 
 Annually:
 - Are metrics still aligned with risks and goals?
-- Are metrics being used for decisions? (If not, retire them.)
-- Are there decisions being made without metric support? (If so, add metrics.)
-- Are metrics being gamed? (If so, change the metric or the incentive.)
+- Are metrics being used for decisions? If not, retire them.
+- Are there decisions being made without metric support? If so, add metrics.
+- Are metrics being gamed? If so, change the metric or the incentive.
 - Is the cost of measurement justified?
 
-Vanity metrics get retired ruthlessly.
+Vanity metrics get retired ruthlessly. Nobody mourns them.
 
 ### 8. Maturity model
 
-For each domain (risk, controls, audit, privacy, vendor, IR), a five-level maturity model (initial, managed, defined, quantitatively managed, optimising) with explicit criteria for each level. Self-assessed annually; externally assessed biennially.
+For each domain (risk, controls, audit, privacy, vendor, IR), a five-level model (initial, managed, defined, quantitatively managed, optimising) with explicit criteria per level. Self-assessed annually; externally assessed biennially.
 
 ## Sample executive dashboard (one-page)
 
@@ -275,29 +277,30 @@ Maturity score: 3.6/5 (up from 3.4 last quarter)
 Open exceptions: 14 (1 expired, escalated)
 
 NARRATIVE
-Patching SLA shortfall driven by major release window in March compressing patch cycle. Action plan agreed with engineering. Vendor outage exposed alternate-IDP gap; project initiated. AI bias risk recently identified pending treatment plan; CTO owns. No incidents required regulatory notification.
+Patching SLA shortfall driven by major release window in March compressing patch cycle. Action plan agreed with engineering. Vendor outage exposed alternate-IDP gap; project initiated. AI bias risk recently identified, treatment plan pending; CTO owns. No incidents required regulatory notification.
 ```
 
-## Real-world lessons baked into this framework
+## Lessons baked into this framework
 
-- **Measure outcomes when you can; activity only when you must.** Activity metrics (number of policies updated) are easy and gameable. Outcome metrics (control effectiveness) are harder but matter.
-- **Boards want trajectory, not snapshots.** "Worse than last quarter" is more important than "amber."
-- **Targets must be defensible.** A 99 percent patching SLA target sounds good; it is also impossible during major release windows. Set targets achievable with current investment, then adjust as investment grows.
-- **Aged metrics deteriorate.** A metric defined three years ago against a system that no longer exists silently produces meaningless data. Annual review is mandatory.
-- **Granularity is a tool, not a goal.** A breakdown of patch SLA by team is useful for accountability but useless to a board.
-- **Forecast where you can.** "On current trajectory we will breach this target by Q3" is more actionable than "we are amber."
+- **Measure outcomes when you can; activity only when you must.** Activity metrics are easy and gameable. Outcome metrics are harder and matter.
+- **Boards want trajectory, not snapshots.** "Worse than last quarter" beats "amber".
+- **Targets must be defensible.** A 99 percent patching SLA target sounds good and is impossible during major release windows. Set targets that are achievable now and tighten them as investment grows. Targets that cannot be hit get quietly ignored by the team.
+- **Aged metrics deteriorate.** A metric defined three years ago against a system that no longer exists silently produces meaningless data. Annual review is non-negotiable.
+- **Granularity is a tool, not a goal.** Breaking patch SLA down by team is useful for accountability and useless to a board.
+- **Forecast where you can.** "On current trajectory we will breach by Q3" is more useful than "we are amber".
 
 ## Common pitfalls
 
-- **Metric soup.** Reporting 100 numbers, all green-by-default, audience tunes out.
-- **Definition drift.** "Critical" CVE means CVSS 9+ in one team and "anything alarming" in another. Standardise definitions.
+- **Metric soup.** 100 numbers, all green by default, audience tunes out.
+- **Definition drift.** "Critical" CVE means CVSS 9+ in one team and "anything alarming" in another. Standardise definitions or the metric is meaningless.
 - **Single-source dependency.** A metric pulled from one vendor system that breaks every other quarter.
-- **Vanity averaging.** Mean time to close findings is impressive; median exposes outliers more honestly.
-- **Cherry-picking.** Reporting only the metrics that look good. Auditors notice.
+- **Vanity averaging.** Mean time to close findings sounds impressive. Median exposes the outliers more honestly. Use both.
+- **Cherry-picking.** Reporting only the metrics that look good. Auditors notice; so do executives, eventually.
 - **No baseline.** Reporting current state without prior periods makes interpretation impossible.
-- **Surprise red.** A red metric on the board dashboard the executive saw five hours ago has been mismanaged.
+- **Surprise red.** A red metric appearing on the board dashboard that the executive saw five hours earlier has been mismanaged.
+- **Reporting what is easy to collect rather than what matters.** Common pattern. The fix is to start with the decision and work backwards to the metric.
 
-## Audit considerations
+## What auditors will ask
 
 - Show me your KPIs, KRIs, and KCIs. How are they defined and where are they sourced?
 - Walk me through one metric end to end: data, calculation, threshold, escalation, action.
@@ -307,9 +310,9 @@ Patching SLA shortfall driven by major release window in March compressing patch
 
 ## What I have done in this space and what I have not
 
-I have studied ISO 27004, NIST 800-55, COBIT measurement guidance, and writings from CISOs and risk leaders on what executives actually use. I have built this framework as I would design it.
+I have studied ISO 27004, NIST 800-55, COBIT measurement guidance, and writing from CISOs and risk leaders on what executives actually use.
 
-I have not personally presented quarterly GRC dashboards to a public-company board for multiple years. I have not had to defend a metric definition against a sceptical CFO. I have not had to retire a flagship metric I had championed because it stopped being useful. Those experiences would refine the framework.
+I have not personally presented quarterly GRC dashboards to a public-company board for multiple years. I have not had to defend a metric definition against a sceptical CFO. I have not had to retire a flagship metric I championed because it stopped being useful. Those experiences would refine the framework.
 
 This is a learning portfolio entry.
 
@@ -321,7 +324,7 @@ This is a learning portfolio entry.
 - **FAIR Institute** at fairinstitute.org for quantitative loss-based measures.
 - **OWASP SAMM** for software-assurance maturity (an example of a published maturity model).
 - **CMMI Cybermaturity Platform** for a commercial maturity reference (overview free).
-- **Various CISO blogs** including those of Phil Venables and Ross Haleliuk for practitioner perspectives on metrics.
+- Various CISO blogs, including Phil Venables and Ross Haleliuk, for practitioner perspectives on metrics.
 
 ## Status
 

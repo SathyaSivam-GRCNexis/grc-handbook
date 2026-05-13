@@ -1,34 +1,36 @@
 # Incident Response & Breach Management Framework
 
-## What this project is
+## What this is
 
-A complete framework an organisation can adopt to detect, triage, contain, eradicate, recover from, and learn from cyber-security incidents and personal-data breaches. Includes severity classification, the incident response (IR) lifecycle, role definitions, communication and escalation paths, breach-notification workflows for multiple jurisdictions, post-incident review process, and a library of IR playbooks for common scenario classes.
+A framework for detecting, triaging, containing, eradicating, recovering from, and learning from cyber-security incidents and personal-data breaches. Severity classification, the incident response lifecycle, role definitions, communication and escalation paths, breach-notification workflows across jurisdictions, the post-incident review process, and a library of IR playbooks for the scenarios that come up most often.
 
-This is what a CISO, IR lead, or DPO would build to replace ad-hoc "we will figure it out when it happens" with structured, practised, defensible response.
+This is what a CISO, IR lead, or DPO would build to replace "we will figure it out when it happens" with something defensible. The "figure it out" approach works exactly once, and the wash-up afterwards is unpleasant.
 
 ## Problem this framework solves
 
-Organisations without a real IR framework typically learn the hard way.
+Organisations without a real IR framework tend to learn the same lessons the hard way.
 
 - The first major incident is the one where everyone discovers there is no defined SEV-1 process.
 - The on-call engineer who detected the issue does not know who has authority to take production offline.
-- Three hours into the incident, someone realises they should have called Legal.
-- Customers find out from social media before official communication.
+- Three hours in, someone realises Legal should have been called two hours ago.
+- Customers find out from social media before the official communication lands.
 - The 72-hour GDPR notification clock has been running since the incident started, and nobody is tracking it.
 - Six months later, the same kind of incident happens again because no post-incident review captured the lessons.
 - The board hears about the incident two weeks after it concludes, and they hear it from the press.
 
-A working framework fixes these by establishing roles, processes, decision authority, communications, and learning loops in advance.
+A working framework fixes these by defining roles, decisions, communications, and learning loops in advance. None of this is exciting, which is why most organisations skip it until the second real incident.
 
-## Business impact
+Strong opinion. Tabletops reveal more than runbooks do. A well-written runbook gives confidence; a tabletop tells you whether the confidence is justified. The communication tree is almost always the first thing that breaks, and only an exercise surfaces that.
 
-- Faster containment, reducing material loss.
-- Defensible record of decisions and actions, critical for regulator and litigant scrutiny.
-- Compliance with notification clocks (GDPR Art 33/34, NIS2, DORA, US state breach laws, sector-specific).
+## Why it pays back
+
+- Faster containment, which directly reduces material loss.
+- Defensible record of decisions and actions, which matters when regulators and litigants turn up.
+- Compliance with notification clocks (GDPR Art 33/34, NIS2, DORA, US state breach laws, sector-specific). India's CERT-In direction (six-hour reporting) is its own beast and worth a separate runbook.
 - Customer trust preserved through prompt and accurate communication.
-- Insurance claim integrity (insurers require evidence of process).
+- Insurance claim integrity. Insurers want evidence of process, not assertions of it.
 - Board confidence in management's ability to handle the next event.
-- Cyclic improvement: each incident improves controls and processes.
+- Improvement loop. Each incident improves controls and processes if the PIR actually closes out.
 
 ## Framework alignment
 
@@ -43,18 +45,20 @@ A working framework fixes these by establishing roles, processes, decision autho
 - **HIPAA Breach Notification Rule** (45 CFR §§ 164.400-414).
 - **SEC Cybersecurity Disclosure Rule** (17 CFR § 229.106) for material incidents at registrants.
 - **UK NCSC CIRP guidance** at ncsc.gov.uk.
+- **CERT-In direction April 2022** for India (6-hour reporting requirement).
+- **DPDP Act 2023** breach intimation obligations to the Data Protection Board.
 - **State-level US breach notification laws** (50+ jurisdictions).
 
 ## Lifecycle phases
 
-The framework follows the NIST 800-61 four-phase model with explicit hooks for privacy and regulatory dimensions.
+The framework follows the NIST 800-61 four-phase model, with explicit hooks for privacy and regulatory dimensions because those clocks do not pause while engineering investigates.
 
 ### 1. Preparation
 
-Everything done before an incident.
+Everything that has to happen before an incident.
 - Defined IR team and on-call rota.
 - Tools (SIEM, EDR, forensics, ticketing).
-- Playbooks (per scenario class).
+- Playbooks per scenario class.
 - Communications templates (customer, regulator, internal).
 - Tabletop exercises and live drills.
 - Vendor relationships (forensics retainer, legal, PR).
@@ -65,19 +69,19 @@ Everything done before an incident.
 - Detection sources: SIEM alerts, EDR alerts, vendor notifications, customer reports, internal reports, threat intelligence.
 - Initial triage by SOC analyst or on-call.
 - Severity classification (SEV-1 to SEV-4) using defined criteria.
-- Activation of appropriate playbook.
+- Playbook activation.
 - IR team assembly proportional to severity.
 
 ### 3. Containment, eradication, recovery
 
 - **Short-term containment:** stop the bleeding. Disconnect, block, quarantine.
-- **Long-term containment:** stable state while eradication proceeds (e.g. forensic snapshot before re-imaging).
+- **Long-term containment:** stable state while eradication proceeds (forensic snapshot before re-imaging).
 - **Eradication:** remove the cause (malware, compromised credentials, vulnerable software).
-- **Recovery:** restore systems and validate normal operation; monitor for recurrence.
+- **Recovery:** restore systems, validate normal operation, monitor for recurrence.
 
 ### 4. Post-incident activity
 
-- Post-incident review (PIR) within 14 days for significant incidents.
+- Post-incident review within 14 days for significant incidents.
 - Action items captured and tracked to closure.
 - Lessons fed into controls, training, playbooks.
 - Metrics updated.
@@ -85,29 +89,29 @@ Everything done before an incident.
 
 ## Severity classification
 
-Defined and consistent severity is the spine of the framework.
+Defined and consistent severity is the spine of the framework. Without it, every incident becomes SEV-1 (or none does), and the response posture is wrong either way.
 
 | Severity | Criteria | Response posture |
 |---|---|---|
-| **SEV-1 Critical** | Active material customer-data exposure or active material service outage; or any confirmed breach with regulatory notification trigger; or any incident requiring board-level disclosure | Full IR team activated within 30 minutes. Executive and CISO bridge. Continuous coverage. CFO + Legal + Comms + DPO required. |
+| **SEV-1 Critical** | Active material customer-data exposure or active material service outage; any confirmed breach with regulatory notification trigger; any incident requiring board-level disclosure | Full IR team activated within 30 minutes. Executive and CISO bridge. Continuous coverage. CFO + Legal + Comms + DPO required. |
 | **SEV-2 High** | Significant potential customer impact or active limited customer-facing impact; significant control failure; suspected breach pending confirmation | IR team activated within 1 hour. CISO informed. Sub-team handles. Hourly updates to leadership. |
-| **SEV-3 Medium** | Internal impact only; controlled events with manageable scope (e.g. single compromised endpoint) | IR team handles in business hours. CISO informed in next standup. |
-| **SEV-4 Low** | Routine events with no business impact (e.g. blocked phishing) | Tracked for trend; no special handling. |
+| **SEV-3 Medium** | Internal impact only; controlled events with manageable scope (single compromised endpoint, for example) | IR team handles in business hours. CISO informed at next standup. |
+| **SEV-4 Low** | Routine events with no business impact (blocked phishing, for example) | Tracked for trend; no special handling. |
 
-Criteria are explicit because hand-wave severity definitions get gamed downward when the implication is escalation cost.
+Criteria are explicit on purpose. Hand-wavy severity definitions get gamed downward when escalation cost is high, and gamed upward when budget conversations are coming.
 
 ## Roles and responsibilities
 
 | Role | Responsibility |
 |---|---|
-| **Incident Commander** | Single point of authority. Coordinates response. Makes operational decisions. Typically a senior IR engineer or duty CISO. |
+| **Incident Commander** | Single point of authority. Coordinates response. Makes operational decisions. Usually a senior IR engineer or duty CISO. |
 | **Technical Lead** | Drives investigation and remediation. |
 | **Communications Lead** | All internal and external messaging. Liaises with comms team. |
 | **Legal Lead** | Regulatory clocks, evidence preservation, third-party communications. |
 | **Privacy Lead (DPO or designate)** | Personal-data assessment, regulatory notification, data-subject communication. |
 | **Engineering Lead** | Service stability, recovery actions, customer-facing changes. |
-| **Executive Sponsor** | Authority for severe actions (taking service offline, customer notifications, ransom decisions). For SEV-1 typically the CISO; for board-disclosable, the CEO. |
-| **Scribe** | Maintains running incident log with timestamps and decisions. |
+| **Executive Sponsor** | Authority for severe actions (taking service offline, customer notifications, ransom decisions). SEV-1 usually the CISO; board-disclosable matters, the CEO. |
+| **Scribe** | Maintains running incident log with timestamps and decisions. Often overlooked, always missed when not present. |
 | **Customer Success Liaison** | Manages customer relationship during impact. |
 | **External Counsel / Forensics Retainer** | Engaged at SEV-1; provides legal privilege framework where applicable. |
 
@@ -115,11 +119,11 @@ Criteria are explicit because hand-wave severity definitions get gamed downward 
 
 ### 1. Incident management policy
 
-Approved by the board or CISO. Defines what is an incident, the severity model, the roles, the basic process, and the authority structure.
+Approved by the board or CISO. Defines what counts as an incident, the severity model, the roles, the basic process, the authority structure.
 
 ### 2. Severity classification standard
 
-Detailed criteria and decision tree. Includes worked examples.
+Detailed criteria plus a decision tree. Worked examples included, because text alone is not enough when the on-call engineer is making the call at 02:00.
 
 ### 3. Incident response plan
 
@@ -138,7 +142,7 @@ Scenario-specific runbooks. Each playbook has:
 - Required notifications.
 - Common pitfalls.
 
-Core playbooks include:
+Core playbooks:
 - Phishing leading to credential compromise.
 - Malware on user endpoint.
 - Ransomware (full enterprise).
@@ -166,11 +170,11 @@ Pre-drafted templates approved by Legal and Comms.
 - Status page update.
 - Specific-customer breach notification (named accounts).
 
-Templates are blank-fill. Drafting in the heat of the incident is too slow and prone to error.
+Templates are blank-fill. Drafting in the heat of an incident is too slow and too error-prone. In one SaaS environment I have seen, the first customer email went out with the wrong company name in it because it was written from scratch under pressure.
 
 ### 6. Notification register
 
-A live register tracking all required notifications for the incident.
+A live register tracking every required notification for the incident. This is the document the IR team forgets to maintain and the regulator asks for first.
 
 | Recipient | Trigger criterion | Clock | Status |
 |---|---|---|---|
@@ -178,6 +182,8 @@ A live register tracking all required notifications for the incident.
 | EDPB-relevant DPAs | Cross-border DPA | 72 hours | Lead authority identified |
 | Affected data subjects | High risk to individuals | Without undue delay | Pending decision |
 | NCSC (UK) | NIS2 essential entity, significant incident | Initial 24h, intermediate 72h, final 1 month | n/a |
+| CERT-In (India) | Any prescribed cyber incident | 6 hours | n/a |
+| Data Protection Board (India) | DPDP-covered breach | Without delay, format prescribed | n/a |
 | Customers (contractual) | Per individual contract | Per contract (24-72h typical) | List building |
 | SEC (US) | Material incident at registrant | 4 business days | n/a |
 | State AGs (US) | Per individual statute | Varies | n/a |
@@ -186,7 +192,7 @@ A live register tracking all required notifications for the incident.
 
 ### 7. Decision authority matrix
 
-Specific high-impact actions need pre-defined authority.
+High-impact actions need pre-defined authority. Arguing about who can decide what during an incident wastes the minutes that matter most.
 
 | Action | Authority |
 |---|---|
@@ -203,17 +209,21 @@ Specific high-impact actions need pre-defined authority.
 
 - Forensic snapshots before any remediation.
 - Chain of custody documentation.
-- Log retention preservation (extended retention activated for incident period).
+- Log retention preservation (extended retention activated for the incident period).
 - Memory captures where appropriate.
 - All decisions and actions logged contemporaneously.
+
+The classic failure mode is engineering rebuilding the compromised host before forensics gets a look. Once gone, it is gone.
 
 ### 9. Tabletop exercise programme
 
 - Quarterly scenarios drawn from the risk scenario library.
-- Annual full-scale exercise involving executive team.
+- Annual full-scale exercise involving the executive team.
 - Biennial supplier-led red-team or purple-team exercise.
 - Exercises rotate across scenario classes (ransomware, BEC, DDoS, supply chain, insider).
 - Documented outcomes; action items tracked.
+
+Tabletops also serve a quieter purpose. They get Legal, Comms, and Engineering in a room together so they meet each other before the real event.
 
 ### 10. Post-incident review
 
@@ -225,15 +235,15 @@ Within 14 days of resolution.
 - What systemic improvements are needed (people, process, technology).
 - Action items with owners and dates.
 
-PIRs are blameless. The aim is learning, not punishment. Findings are shared internally to maximise organisational learning.
+PIRs are blameless. The aim is learning, not punishment. Findings are shared internally so the rest of the organisation gets the benefit.
 
 ### 11. Customer breach communication patterns
 
-- **Soonest possible accurate communication** beats fast incorrect communication.
-- Include what we know, what we do not know, what we are doing, what customers can do, when we will update.
-- Direct from the company; not from PR firm.
+- **Soonest possible accurate communication** beats fast incorrect communication, and both beat silence.
+- Say what you know, what you do not know, what you are doing, what customers can do, when you will update next.
+- Direct from the company. Not from a PR firm.
 - Consistent across channels.
-- Updates on a stated cadence.
+- Updates on a stated cadence. Drift on cadence is what customers actually complain about.
 
 ### 12. Metrics
 
@@ -243,63 +253,63 @@ PIRs are blameless. The aim is learning, not punishment. Findings are shared int
 - Tabletop exercise frequency and learnings closed.
 - Incident volume and severity distribution.
 
-## Real-world lessons baked into this framework
+## Lessons baked into this framework
 
 - **The first hour is decisive.** Most damage occurs and most evidence is created in the first hour. A pre-defined process beats improvisation.
-- **Single Incident Commander discipline.** Multiple "leaders" produce contradictory actions. One IC at a time.
-- **Communications under-promise / over-deliver.** "Within 24 hours" you can hit; "in the next hour" you usually cannot.
-- **Notification clocks start at awareness, not confirmation.** GDPR's 72 hours starts when the controller becomes aware that a breach has occurred, even with limited information. Wait for full confidence and you have already missed the clock.
+- **One Incident Commander at a time.** Multiple "leaders" produce contradictory actions. Single IC discipline.
+- **Communications under-promise / over-deliver.** "Within 24 hours" you can hit. "In the next hour" you usually cannot.
+- **Notification clocks start at awareness, not confirmation.** GDPR's 72 hours starts when the controller becomes aware that a breach has occurred, even with limited information. CERT-In's 6 hours is more aggressive still. Wait for full confidence and the clock has already gone.
 - **Lawyers and engineers speak different languages.** Get them in the same room early so they translate in real time.
-- **Tabletop early, tabletop often.** Most organisations discover process gaps during their first real incident. Tabletops surface gaps cheaply.
-- **Vendor breach is your incident.** Customers do not care that the data was at a sub-processor; they care that you held it.
-- **Don't pay ransoms, except sometimes.** Position is policy, not in-the-moment decision. Resolve in advance with executive and legal.
+- **Tabletop early, tabletop often.** Most organisations discover process gaps during their first real incident. Tabletops surface those gaps cheaply.
+- **A vendor breach is your incident.** Customers do not care that the data was at a sub-processor. They care that you held it.
+- **Do not pay ransoms, except sometimes.** Position should be policy, not in-the-moment decision. Settle the principle in advance with executive and legal.
 - **The PIR is the deliverable.** An incident without a PIR is an incident that will recur.
 
 ## Common pitfalls
 
 - **No defined IC.** Three engineers each doing what they think best.
-- **Severity inflation.** Every incident is SEV-1. Real SEV-1 capacity is exhausted.
-- **Severity deflation.** SEV-2 incidents handled as SEV-3 to avoid waking executives.
-- **Comms paralysis.** Waiting for "complete information" before saying anything; customers learn from press first.
+- **Severity inflation.** Every incident is SEV-1. Real SEV-1 capacity gets exhausted.
+- **Severity deflation.** SEV-2 incidents handled as SEV-3 to avoid waking executives. Common pattern in teams where waking the CTO has cultural cost.
+- **Comms paralysis.** Waiting for "complete information" before saying anything. Customers learn from press first.
 - **Heroics dependence.** One specific person knows the systems; without them, response collapses.
-- **Forgotten clocks.** Regulatory deadlines missed because no one tracked them.
+- **Forgotten clocks.** Regulatory deadlines missed because nobody was tracking them. The notification register exists to stop this and gets ignored anyway.
 - **No PIR.** "We will write it next week." It never happens.
-- **PIR theatre.** A PIR full of action items, none ever closed.
-- **Compromise of the responder communications.** Discussing the incident on the same compromised systems being used by the attacker. Use out-of-band channels for IR comms.
+- **PIR theatre.** A PIR full of action items, none of them ever closed. Worse than no PIR because it gives false comfort.
+- **Compromised responder communications.** Discussing the incident on the same systems the attacker still controls. Out-of-band channels for IR comms.
 
-## Audit considerations
+## What auditors will ask
 
 - Show me your incident management policy and IR plan.
-- Walk me through your most recent SEV-2 or SEV-1 incident.
+- Walk me through your most recent SEV-2 or SEV-1.
 - Show me the notification register for that incident.
 - Show me the PIR. Show me action item closure.
-- Show me your most recent tabletop exercise.
+- Show me your most recent tabletop.
 - Show me your IR team rota and on-call coverage.
 - Show me your decision authority matrix.
 
-## How this framework would actually be implemented
+## How a rollout actually goes
 
-A 6-month rollout for a 200-500 person SaaS company starting with informal IR.
+A 6-month plan for a 200-500 person SaaS company starting with informal IR.
 
-**Month 1.** Approve policy and severity classification. Establish IR team and on-call. Build notification register template.
+**Month 1.** Approve policy and severity classification. Establish IR team and on-call. Build the notification register template.
 
-**Month 2.** Write the IR plan. Build top 5 playbooks (phishing, ransomware, cloud-account compromise, vendor breach, DDoS).
+**Month 2.** Write the IR plan. Build the top 5 playbooks (phishing, ransomware, cloud-account compromise, vendor breach, DDoS).
 
 **Month 3.** Communications templates with Legal and Comms approval. Decision authority matrix with executive sign-off.
 
-**Month 4.** First tabletop exercise. Address gaps.
+**Month 4.** First tabletop. Address gaps. Expect the communications tree to be the first casualty.
 
-**Month 5.** Remaining playbooks. Build 24/7 on-call coverage if not already.
+**Month 5.** Remaining playbooks. Build 24/7 on-call coverage if not already in place.
 
 **Month 6.** Second tabletop. Insurance and external counsel relationships in place. PIR template tested on a SEV-3.
 
-By month 6, the next real incident is met by structure rather than panic.
+By month 6, the next real incident is met by structure rather than panic. That is roughly the realistic floor; faster rollouts tend to skip the tabletops and pay for it later.
 
 ## What I have done in this space and what I have not
 
-I have studied NIST 800-61, ISO 27035, GDPR Articles 33-34, NIS2 incident reporting, DORA Articles 17-23, and many published incident reports.
+I have studied NIST 800-61, ISO 27035, GDPR Articles 33-34, NIS2 incident reporting, DORA Articles 17-23, CERT-In's 2022 direction, and many published incident reports.
 
-I have not personally been Incident Commander on a SEV-1 with regulator and customer notifications running concurrently. I have not had to brief a board mid-incident. I have not made the call to take a customer-facing service offline. Those experiences shape practical framework details (especially comms cadence and decision authority) in ways I cannot fully anticipate.
+I have not personally been Incident Commander on a SEV-1 with regulator and customer notifications running concurrently. I have not had to brief a board mid-incident. I have not made the call to take a customer-facing service offline. Those experiences shape practical framework details, especially around comms cadence and decision authority, in ways I cannot fully anticipate.
 
 This is a learning portfolio entry.
 
@@ -308,12 +318,13 @@ This is a learning portfolio entry.
 - **NIST SP 800-61 Rev 2.** Free at csrc.nist.gov. Rev 3 in development as of 2026.
 - **ISO/IEC 27035 series.** Paid; ENISA publishes complementary free guidance.
 - **NCSC Cyber Security Incident Response Plan template.** Free at ncsc.gov.uk.
-- **CISA Incident Response Playbooks for Federal Civilian Executive Branch.** Free at cisa.gov; valuable patterns.
+- **CISA Incident Response Playbooks for Federal Civilian Executive Branch.** Free at cisa.gov; the patterns are worth borrowing.
 - **ICO Personal Data Breach guidance.** Free at ico.org.uk.
 - **EDPB Guidelines 9/2022 on personal data breach notification.** Free at edpb.europa.eu.
+- **CERT-In direction 28 April 2022.** Free at cert-in.org.in.
 - **MITRE ATT&CK and D3FEND** for technique-level investigation patterns.
 - **Verizon DBIR** for empirical incident patterns.
-- **The Code of Practice for Crisis Management ISO 22301.** Adjacent but useful.
+- **ISO 22301** Code of Practice for Crisis Management. Adjacent, useful.
 
 ## Status
 
